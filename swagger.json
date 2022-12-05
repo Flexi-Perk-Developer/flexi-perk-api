@@ -400,7 +400,135 @@
         "tags" : [ "tweet" ],
         "description" : "Delete tweet by id"
       }
+    },
+
+    "/associatedJob" : {
+      "get" : {
+        "summary" : "List all associatedJob with pagination",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "page",
+          "type" : "integer",
+          "required" : false,
+          "description" : "Page"
+        }, {
+          "in" : "query",
+          "name" : "perPage",
+          "type" : "integer",
+          "required" : false,
+          "description" : "Per page"
+        } ],
+        "tags" : [ "associatedJob" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/AssociatedJob"
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "Create new associatedJob",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "required" : [ "associatedJob" ],
+            "properties" : {
+              "associatedJob" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/AssociatedJob"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "422" : {
+            "description" : "Unprocessable Entity",
+            "schema" : {
+              "$ref" : "#/definitions/UnprocessableEntityResponse"
+            }
+          }
+        },
+        "tags" : [ "associatedJob" ],
+        "description" : "Create new associated Job"
+      }
+    },
+    "/associatedJob/{id}" : {
+      "get" : {
+        "summary" : "Get associatedJob by id",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "type" : "integer",
+          "required" : true,
+          "description" : "Associated Job id"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/AssociatedJob"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "tags" : [ "associatedJob" ],
+        "description" : "Get associated Job by id"
+      },
+      "delete" : {
+        "summary" : "Delete associatedJob by id",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "type" : "integer",
+          "required" : true,
+          "description" : "AssociatedJob id"
+        } ],
+        "security" : [ {
+          "bearer" : [ ]
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "OK"
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "tags" : [ "tweet" ],
+        "description" : "Delete associatedJob by id"
+      }
     }
+
   },
   "definitions" : {
     "User" : {
@@ -472,6 +600,51 @@
           "type" : "array",
           "items" : {
             "$ref" : "#/definitions/Tweet"
+          }
+        }
+      }
+    },
+    "AssociatedJob" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        },
+        "userId" : {
+          "type" : "integer"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "AssociateJobList" : {
+      "type" : "object",
+      "properties" : {
+        "page" : {
+          "type" : "integer"
+        },
+        "perPage" : {
+          "type" : "integer"
+        },
+        "totalPage" : {
+          "type" : "integer"
+        },
+        "count" : {
+          "type" : "integer"
+        },
+        "rows" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/AssociatedJob"
           }
         }
       }

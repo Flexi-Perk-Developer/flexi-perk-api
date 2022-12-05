@@ -5,6 +5,7 @@ import * as config from '@/config/sequelize';
 // import models
 import userModel from './models/user';
 import tweetModel from './models/tweet';
+import associatedJobModel from './models/associatedJob';
 
 // Configuration
 const env = process.env.NODE_ENV;
@@ -17,6 +18,7 @@ const sequelize = new Sequelize(sequelizeConfig || config.development);
 const modelDefiners = [
   userModel,
   tweetModel,
+  associatedJobModel,
 ];
 
 // eslint-disable-next-line no-restricted-syntax
