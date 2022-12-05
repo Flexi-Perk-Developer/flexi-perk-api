@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import * as associatedJobController from '@/controllers/associatedJob';
 import * as associatedJobValidations from '@/routes/validations/associatedJob';
-import { cache, validate } from '@/middleware';
+import { validate } from '@/middleware';
 
 const router = Router();
 

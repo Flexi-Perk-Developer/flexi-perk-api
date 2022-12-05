@@ -401,8 +401,7 @@
         "description" : "Delete tweet by id"
       }
     },
-
-    "/associatedJob" : {
+    "/associatedJobs" : {
       "get" : {
         "summary" : "List all associatedJob with pagination",
         "parameters" : [ {
@@ -468,7 +467,7 @@
         "description" : "Create new associated Job"
       }
     },
-    "/associatedJob/{id}" : {
+    "/associatedJobs/{id}" : {
       "get" : {
         "summary" : "Get associatedJob by id",
         "parameters" : [ {
@@ -528,7 +527,6 @@
         "description" : "Delete associatedJob by id"
       }
     }
-
   },
   "definitions" : {
     "User" : {
