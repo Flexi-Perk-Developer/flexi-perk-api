@@ -435,9 +435,9 @@
           "required" : true,
           "schema" : {
             "type" : "object",
-            "required" : [ "associatedJob" ],
+            "required" : [ "description" ],
             "properties" : {
-              "associatedJob" : {
+              "description" : {
                 "type" : "string"
               }
             }

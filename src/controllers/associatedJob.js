@@ -9,15 +9,18 @@ import redisClient from '@/libs/redis';
  */
 export const createAssociatedJob = async (req, res, next) => {
   try {
-    const { id: userId } = req.user;
+    // const { id: userId } = req.user;
 
-    const associatedJobData = { ...req.body, userId };
+    const associatedJobData = { ...req.body, userId: 1 };
+
+    console.log(associatedJobData)
     const associatedJob = await db.models.associatedJob
       .create(associatedJobData, {
         fields: ['userId', 'description'],
       });
 
     const fakeReturnDataPerRequest = { ...associatedJob, paymentData: {t1: 5200, t2: 4400, t3: 6000}}
+    console.log(fakeReturnDataPerRequest)
     return res.status(201).json(fakeReturnDataPerRequest);
   } catch (err) {
     return next(err);

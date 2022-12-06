@@ -1,7 +1,4 @@
-import { compare, hash } from 'bcrypt';
 import { DataTypes, Model } from 'sequelize';
-
-import { tokenHelper, mailHelper } from '@/helpers';
 
 export default function (sequelize) {
   class AssociatedJob extends Model {
@@ -21,7 +18,7 @@ export default function (sequelize) {
       allowNull: false,
     }
   }, {
-    modelName: 'associateJob',
+    modelName: 'associatedJob',
     sequelize,
   });
 

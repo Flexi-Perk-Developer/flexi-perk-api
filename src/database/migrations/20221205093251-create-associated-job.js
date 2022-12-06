@@ -33,4 +33,4 @@ export const up = (queryInterface, Sequelize) => queryInterface.createTable('ass
   },
 });
 
-export const down = (queryInterface) => queryInterface.dropTable('associateJobs');
+export const down = (queryInterface) => queryInterface.dropTable('associatedJobs');

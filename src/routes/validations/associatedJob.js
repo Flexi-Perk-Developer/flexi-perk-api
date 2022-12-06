@@ -6,5 +6,5 @@ export const listAssociatedJobRules = [
 ];
 
 export const createAssociatedJobRules = [
-  body('associatedJob').isLength({ max: 140 }).exists(),
+  body('description').isLength({ max: 140 }).exists(),
 ];
