@@ -13,13 +13,12 @@ export const createAssociatedJob = async (req, res, next) => {
 
     const associatedJobData = { ...req.body, userId: 1 };
 
-    console.log(associatedJobData)
     const associatedJob = await db.models.associatedJob
       .create(associatedJobData, {
         fields: ['userId', 'description'],
       });
 
-    const fakeReturnDataPerRequest = { ...associatedJob, paymentData: {t1: 5200, t2: 4400, t3: 6000}}
+    const fakeReturnDataPerRequest = { ...associatedJob.dataValues, paymentData: {t1: 5200, t2: 4400, t3: 6000}}
     console.log(fakeReturnDataPerRequest)
     return res.status(201).json(fakeReturnDataPerRequest);
   } catch (err) {
