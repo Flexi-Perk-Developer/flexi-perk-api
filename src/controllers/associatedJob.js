@@ -1,7 +1,6 @@
 import createError from 'http-errors';
 
 import db from '@/database';
-import redisClient from '@/libs/redis';
 
 /**
  * POST /associatedJob
@@ -11,16 +10,20 @@ export const createAssociatedJob = async (req, res, next) => {
   try {
     // const { id: userId } = req.user;
 
-    const associatedJobData = { ...req.body, userId: 1 };
+    const associatedJobData = { 
+      ...req.body, 
+      userId: 1, 
+      payment1: Math.floor(Math.random() * 6000), 
+      payment2: Math.floor(Math.random() * 6000), 
+      payment3: Math.floor(Math.random() * 6000) 
+    };
 
     const associatedJob = await db.models.associatedJob
       .create(associatedJobData, {
-        fields: ['userId', 'description'],
+        fields: ['userId', 'description', 'payment1', 'payment2', 'payment3'],
       });
 
-    const fakeReturnDataPerRequest = { ...associatedJob.dataValues, paymentData: {t1: 5200, t2: 4400, t3: 6000}}
-    console.log(fakeReturnDataPerRequest)
-    return res.status(201).json(fakeReturnDataPerRequest);
+    return res.status(201).json(associatedJob);
   } catch (err) {
     return next(err);
   }

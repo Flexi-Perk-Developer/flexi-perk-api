@@ -614,6 +614,15 @@
         "description" : {
           "type" : "string"
         },
+        "payment1" : {
+          "type" : "integer"
+        },
+        "payment2" : {
+          "type" : "integer"
+        },
+        "payment3" : {
+          "type" : "integer"
+        },
         "createdAt" : {
           "type" : "string",
           "format" : "date-time"
