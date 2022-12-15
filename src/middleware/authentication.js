@@ -21,7 +21,7 @@ export default async function (req, res, next) {
         const tokenData = await tokenHelper.verifyToken(token);
 
         // Find user from database
-        const user = await db.models.user.findByPk(tokenData.id);
+        const user = await db.models.User.findByPk(tokenData.id);
         if (!user) {
           return next({ status: 401, message: 'There is no user' });
         }

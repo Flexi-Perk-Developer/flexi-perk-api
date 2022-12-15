@@ -6,6 +6,15 @@ import * as config from '@/config/sequelize';
 import userModel from './models/user';
 import tweetModel from './models/tweet';
 import associatedJobModel from './models/associatedJob';
+import availableOffer from './models/availableOffer';
+import claimOffer from './models/claimOffer';
+import paymentData from './models/paymentData';
+import proofOfIdentificationDocument from './models/proofOfIdentificationDocument';
+import proofOfPaymentDocument from './models/proofOfPaymentDocument';
+import proofOfResidenceDocument from './models/proofOfResidenceDocument';
+import referral from './models/referral';
+import requestedOffer from './models/requestedOffer';
+import userkyc from './models/userkyc';
 
 // Configuration
 const env = process.env.NODE_ENV;
@@ -19,6 +28,15 @@ const modelDefiners = [
   userModel,
   tweetModel,
   associatedJobModel,
+  userkyc,
+  referral,
+  availableOffer,
+  requestedOffer,
+  claimOffer,
+  paymentData,
+  proofOfIdentificationDocument,
+  proofOfPaymentDocument,
+  proofOfResidenceDocument
 ];
 
 // eslint-disable-next-line no-restricted-syntax

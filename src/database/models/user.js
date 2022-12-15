@@ -24,7 +24,11 @@ export default function (sequelize) {
     }
 
     static associate(models) {
-      User.hasMany(models.tweet, { foreignKey: 'userId' });
+      User.hasMany(models.Tweet, { foreignKey: 'userId' });
+      User.hasMany(models.AssociatedJob, { foreignKey: 'userId' });
+      User.hasMany(models.RequestedOffer, { foreignKey: 'userId' });
+      User.hasMany(models.UserKYC, { foreignKey: 'userId' });
+      User.hasMany(models.Referral, { foreignKey: 'userId' });
     }
   }
 
@@ -47,7 +51,7 @@ export default function (sequelize) {
       allowNull: false,
     },
   }, {
-    modelName: 'user',
+    modelName: 'User',
     sequelize,
   });
 

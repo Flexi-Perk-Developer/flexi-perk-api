@@ -11,7 +11,7 @@ export const login = async (req, res, next) => {
     const { email, password } = req.body;
 
     // Find user by email address
-    const user = await db.models.user.findOne({ where: { email } });
+    const user = await db.models.User.findOne({ where: { email } });
     if (!user) {
       return next(createError(400, 'There is no user with this email address!'));
     }
@@ -38,7 +38,7 @@ export const login = async (req, res, next) => {
 export const register = async (req, res, next) => {
   try {
     // Create user
-    const user = await db.models.user
+    const user = await db.models.User
       .create(req.body, {
         fields: ['firstName', 'lastName', 'email', 'password'],
       });

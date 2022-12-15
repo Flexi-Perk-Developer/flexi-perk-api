@@ -18,7 +18,7 @@ export const createAssociatedJob = async (req, res, next) => {
       payment3: Math.floor(Math.random() * 6000)
     };
 
-    const associatedJob = await db.models.associatedJob
+    const associatedJob = await db.models.AssociatedJob
       .create(associatedJobData, {
         fields: ['userId', 'description', 'payment1', 'payment2', 'payment3'],
       });
@@ -40,12 +40,12 @@ export const getAssociatedJobs = async (req, res, next) => {
     const { page = 1, perPage = 10 } = req.query;
     const offset = page * perPage - perPage;
 
-    const associatedJobListResponse = await db.models.associatedJob
+    const associatedJobListResponse = await db.models.AssociatedJob
       .findAndCountAll({
         offset,
         limit: perPage,
         include: {
-          model: db.models.user,
+          model: db.models.User,
           attributes: ['id', 'firstName', 'lastName'],
         },
         order: [['createdAt', 'DESC']],
@@ -71,11 +71,11 @@ export const getAssociatedJobById = async (req, res, next) => {
   try {
     const { id: associatedJobId } = req.params;
 
-    const associatedJob = await db.models.associatedJob
+    const associatedJob = await db.models.AssociatedJob
       .findOne({
         where: { id: associatedJob },
         include: {
-          model: db.models.user,
+          model: db.models.User,
           attributes: ['id', 'firstName', 'lastName'],
         },
       });
@@ -98,7 +98,7 @@ export const deleteAssociatedJob = async (req, res, next) => {
     const { id: userId } = req.user;
     const { id: associatedJobId } = req.params;
 
-    const associatedJob = await db.models.associatedJob.findOne({ where: { id: associatedJob, userId } });
+    const associatedJob = await db.models.AssociatedJob.findOne({ where: { id: associatedJob, userId } });
     if (!associatedJob) {
       return next(createError(404, 'There is no associatedJob with this id!'));
     }

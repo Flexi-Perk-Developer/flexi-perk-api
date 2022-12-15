@@ -4,7 +4,8 @@ export default function (sequelize) {
   class AssociatedJob extends Model {
 
     static associate(models) {
-      AssociatedJob.belongsTo(models.user, { foreignKey: 'userId' });
+      AssociatedJob.belongsTo(models.User, { foreignKey: 'userId' });
+      AssociatedJob.hasMany(models.ProofOfPaymentDocument, { foreignKey: 'paymentDataId' });
     }
   }
 
@@ -31,7 +32,7 @@ export default function (sequelize) {
       allowNull: false,
     },
   }, {
-    modelName: 'associatedJob',
+    modelName: 'AssociatedJob',
     sequelize,
   });
 

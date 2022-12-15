@@ -13,7 +13,7 @@ export const createTweet = async (req, res, next) => {
 
     // Create tweet
     const tweetData = { ...req.body, userId };
-    const tweet = await db.models.tweet
+    const tweet = await db.models.Tweet
       .create(tweetData, {
         fields: ['userId', 'tweet'],
       });
@@ -37,12 +37,12 @@ export const getTweets = async (req, res, next) => {
     const { page = 1, perPage = 10 } = req.query;
     const offset = page * perPage - perPage;
 
-    const tweetListResponse = await db.models.tweet
+    const tweetListResponse = await db.models.Tweet
       .findAndCountAll({
         offset,
         limit: perPage,
         include: {
-          model: db.models.user,
+          model: db.models.User,
           attributes: ['id', 'firstName', 'lastName'],
         },
         order: [['createdAt', 'DESC']],
@@ -72,11 +72,11 @@ export const getTweetById = async (req, res, next) => {
   try {
     const { id: tweetId } = req.params;
 
-    const tweet = await db.models.tweet
+    const tweet = await db.models.Tweet
       .findOne({
         where: { id: tweetId },
         include: {
-          model: db.models.user,
+          model: db.models.User,
           attributes: ['id', 'firstName', 'lastName'],
         },
       });
@@ -103,7 +103,7 @@ export const deleteTweet = async (req, res, next) => {
     const { id: userId } = req.user;
     const { id: tweetId } = req.params;
 
-    const tweet = await db.models.tweet.findOne({ where: { id: tweetId, userId } });
+    const tweet = await db.models.Tweet.findOne({ where: { id: tweetId, userId } });
     if (!tweet) {
       return next(createError(404, 'There is no tweet with this id!'));
     }

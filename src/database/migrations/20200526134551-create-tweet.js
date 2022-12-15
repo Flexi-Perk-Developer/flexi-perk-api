@@ -1,4 +1,4 @@
-export const up = (queryInterface, Sequelize) => queryInterface.createTable('tweets', {
+export const up = (queryInterface, Sequelize) => queryInterface.createTable('Tweets', {
   id: {
     allowNull: false,
     autoIncrement: true,
@@ -9,7 +9,7 @@ export const up = (queryInterface, Sequelize) => queryInterface.createTable('twe
     allowNull: false,
     type: Sequelize.INTEGER,
     references: {
-      model: 'users',
+      model: 'Users',
       field: 'id',
     },
     onDelete: 'cascade',
@@ -33,4 +33,4 @@ export const up = (queryInterface, Sequelize) => queryInterface.createTable('twe
   },
 });
 
-export const down = (queryInterface) => queryInterface.dropTable('tweets');
+export const down = (queryInterface) => queryInterface.dropTable('Tweets');
