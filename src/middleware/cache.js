@@ -1,4 +1,4 @@
-import redisClient from '@/libs/redis';
+// import redisClient from '@/libs/redis';
 
 export default function (cache, evalString = null) {
   return (req, res, next) => {

@@ -7,5 +7,5 @@ export default function (app) {
   app.use('/', indexRouter);
   app.use('/auth', authRouter);
   app.use('/tweets', tweetRouter);
-  app.use('/associatedJobs', associatedJobRouter)
+  app.use('/associatedJobs', associatedJobRouter);
 }

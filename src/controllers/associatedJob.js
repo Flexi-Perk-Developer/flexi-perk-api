@@ -12,7 +12,7 @@ export const createAssociatedJob = async (req, res, next) => {
 
     const associatedJobData = {
       ...req.body,
-      userId: userId
+      userId,
     };
 
     const associatedJob = await db.models.AssociatedJob
@@ -46,6 +46,7 @@ export const getAssociatedJobs = async (req, res, next) => {
         order: [['createdAt', 'DESC']],
       });
 
+    const totalPage = Math.ceil(associatedJobListResponse.count / perPage);
     const response = {
       ...associatedJobListResponse, page, totalPage, perPage,
     };

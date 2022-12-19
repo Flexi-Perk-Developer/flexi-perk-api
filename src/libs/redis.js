@@ -1,4 +1,4 @@
-import redis from 'redis';
+// import redis from 'redis';
 
 /**
  * Create redis client instance
@@ -16,5 +16,5 @@ import redis from 'redis';
 //   // eslint-disable-next-line no-console
 //   console.log('Redis error', err);
 // });
-const redisClient = {}
+const redisClient = {};
 export default redisClient;

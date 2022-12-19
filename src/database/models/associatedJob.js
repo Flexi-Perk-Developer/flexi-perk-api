@@ -2,7 +2,6 @@ import { DataTypes, Model } from 'sequelize';
 
 export default function (sequelize) {
   class AssociatedJob extends Model {
-
     static associate(models) {
       AssociatedJob.belongsTo(models.User, { foreignKey: 'userId' });
       AssociatedJob.hasMany(models.ProofOfPaymentDocument, { foreignKey: 'paymentDataId' });

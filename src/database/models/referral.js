@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model, DataTypes
+  Model, DataTypes,
 } = require('sequelize');
+
 module.exports = (sequelize) => {
   class Referral extends Model {
     /**
@@ -17,15 +17,15 @@ module.exports = (sequelize) => {
   Referral.init({
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: true, //Can make referal without being logged in
+      allowNull: true, // Can make referal without being logged in
       references: {
         model: 'Users',
         field: 'id',
-      }
+      },
     },
     name: DataTypes.STRING,
     email: DataTypes.STRING,
-    contactNumber: DataTypes.STRING
+    contactNumber: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'Referral',

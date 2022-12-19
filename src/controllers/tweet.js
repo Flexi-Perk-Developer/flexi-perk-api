@@ -1,7 +1,7 @@
 import createError from 'http-errors';
 
 import db from '@/database';
-import redisClient from '@/libs/redis';
+// import redisClient from '@/libs/redis';
 
 /**
  * POST /tweets

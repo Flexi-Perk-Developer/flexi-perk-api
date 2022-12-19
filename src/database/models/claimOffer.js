@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model, DataTypes
+  Model, DataTypes,
 } = require('sequelize');
+
 module.exports = (sequelize) => {
   class ClaimOffer extends Model {
     /**
@@ -15,7 +15,7 @@ module.exports = (sequelize) => {
     }
   }
   ClaimOffer.init({
-    requestedOfferId: DataTypes.INTEGER
+    requestedOfferId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'ClaimOffer',

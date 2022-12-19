@@ -36,7 +36,7 @@ const modelDefiners = [
   paymentData,
   proofOfIdentificationDocument,
   proofOfPaymentDocument,
-  proofOfResidenceDocument
+  proofOfResidenceDocument,
 ];
 
 // eslint-disable-next-line no-restricted-syntax

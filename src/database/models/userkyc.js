@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model, DataTypes
+  Model, DataTypes,
 } = require('sequelize');
+
 module.exports = (sequelize) => {
   class UserKYC extends Model {
     /**
@@ -23,7 +23,7 @@ module.exports = (sequelize) => {
     },
     address: DataTypes.STRING,
     idNumber: DataTypes.STRING,
-    gender: DataTypes.STRING
+    gender: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'UserKYC',

@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model, DataTypes
+  Model, DataTypes,
 } = require('sequelize');
+
 module.exports = (sequelize) => {
   class RequestedOffer extends Model {
     /**
@@ -21,7 +21,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     availableOfferId: DataTypes.INTEGER,
-    deletedAt: DataTypes.DATE
+    deletedAt: DataTypes.DATE,
   }, {
     sequelize,
     modelName: 'RequestedOffer',

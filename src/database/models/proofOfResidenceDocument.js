@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model, DataTypes
+  Model, DataTypes,
 } = require('sequelize');
+
 module.exports = (sequelize) => {
   class ProofOfResidenceDocument extends Model {
     /**
@@ -20,7 +20,7 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     location: DataTypes.STRING,
-    description: DataTypes.STRING
+    description: DataTypes.STRING,
   }, {
     sequelize,
     modelName: 'ProofOfResidenceDocument',

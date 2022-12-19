@@ -1,6 +1,5 @@
-'use strict';
 const {
-  Model, DataTypes
+  Model, DataTypes,
 } = require('sequelize');
 
 module.exports = (sequelize) => {
@@ -14,16 +13,15 @@ module.exports = (sequelize) => {
       // define association here
       PaymentData.belongsTo(models.AssociatedJob, { foreignKey: 'associatedJobId' });
       PaymentData.hasMany(models.ProofOfPaymentDocument, { foreignKey: 'paymentDataId' });
-      
     }
   }
   PaymentData.init({
     associatedJobId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
     monthOfIncome: DataTypes.DATE,
-    amount: DataTypes.FLOAT
+    amount: DataTypes.FLOAT,
   }, {
     sequelize,
     modelName: 'PaymentData',
