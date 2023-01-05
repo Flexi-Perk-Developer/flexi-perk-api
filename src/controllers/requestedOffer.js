@@ -3,7 +3,7 @@ import createError from 'http-errors';
 import db from '@/database';
 
 /**
- * POST /requestedOffer
+ * POST /requestedOffers
  * Create requestedOffer request
  */
 export const createRequestedOffer = async (req, res, next) => {
@@ -57,7 +57,7 @@ export const getRequestedOffers = async (req, res, next) => {
 };
 
 /**
- * GET /requestedOffer/:id
+ * GET /requestedOffers/:id
  * Get requestedOfferController by id
  */
 export const getRequestedOfferById = async (req, res, next) => {
@@ -83,7 +83,7 @@ export const getRequestedOfferById = async (req, res, next) => {
 };
 
 /**
- * DELETE /requestedOffer/:id
+ * DELETE /requestedOfferss/:id
  * Delete requestedOffer request
  */
 export const deleteRequestedOffer = async (req, res, next) => {
