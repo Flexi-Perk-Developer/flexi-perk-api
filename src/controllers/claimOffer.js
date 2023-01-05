@@ -3,7 +3,7 @@ import createError from 'http-errors';
 import db from '@/database';
 
 /**
- * POST /claimOffer
+ * POST claimOffers
  * Create claimOffer request
  */
 export const createClaimOffer = async (req, res, next) => {
@@ -60,7 +60,7 @@ export const getClaimOffers = async (req, res, next) => {
 };
 
 /**
- * GET /claimOffer/:id
+ * GET /claimOffers/:id
  * Get claimOfferController by id
  */
 export const getClaimOfferById = async (req, res, next) => {
@@ -89,7 +89,7 @@ export const getClaimOfferById = async (req, res, next) => {
 };
 
 /**
- * DELETE /claimOffer/:id
+ * DELETE /claimOffers/:id
  * Delete claimOffer request
  */
 export const deleteClaimOffer = async (req, res, next) => {
@@ -97,7 +97,7 @@ export const deleteClaimOffer = async (req, res, next) => {
     const { id: userId } = req.user;
     const { id: claimOfferId } = req.params;
 
-    //TODO: Fix delete lookup
+    //TODO: Fix delete lookup requestOfferId?
 
     const claimOffer = await db.models.ClaimOffer.findOne({ where: { id: claimOfferId, userId } });
     if (!claimOffer) {
