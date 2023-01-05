@@ -10,17 +10,17 @@ export const createAvailableOffer = async (req, res, next) => {
   try {
     const { id: userId } = req.user;
 
-    const AvailableOfferData = {
+    const availableOfferData = {
       ...req.body,
       userId,
     };
 
-    const AvailableOffer = await db.models.AvailableOffer
-      .create(AvailableOfferData, {
+    const availableOffer = await db.models.AvailableOffer
+      .create(availableOfferData, {
         fields: ['userId', 'description'],
       });
 
-    return res.status(201).json(AvailableOffer);
+    return res.status(201).json(availableOffer);
   } catch (err) {
     return next(err);
   }
@@ -35,7 +35,7 @@ export const getAvailableOffers = async (req, res, next) => {
     const { page = 1, perPage = 10 } = req.query;
     const offset = page * perPage - perPage;
 
-    const AvailableOfferListResponse = await db.models.AvailableOffer
+    const availableOfferListResponse = await db.models.AvailableOffer
       .findAndCountAll({
         offset,
         limit: perPage,
@@ -46,9 +46,9 @@ export const getAvailableOffers = async (req, res, next) => {
         order: [['createdAt', 'DESC']],
       });
 
-    const totalPage = Math.ceil(AvailableOfferListResponse.count / perPage);
+    const totalPage = Math.ceil(availableOfferListResponse.count / perPage);
     const response = {
-      ...AvailableOfferListResponse, page, totalPage, perPage,
+      ...availableOfferListResponse, page, totalPage, perPage,
     };
     return res.json(response);
   } catch (err) {
@@ -64,7 +64,7 @@ export const getAvailableOfferById = async (req, res, next) => {
   try {
     const { id: AvailableOfferId } = req.params;
 
-    const AvailableOffer = await db.models.AvailableOffer
+    const availableOffer = await db.models.AvailableOffer
       .findOne({
         where: { id: AvailableOfferId },
         include: {
@@ -72,7 +72,7 @@ export const getAvailableOfferById = async (req, res, next) => {
           attributes: ['id', 'firstName', 'lastName'],
         },
       });
-    if (!AvailableOffer) {
+    if (!availableOffer) {
       return next(createError(404, 'There is no AvailableOffer with this id!'));
     }
 
@@ -91,12 +91,12 @@ export const deleteAvailableOffer = async (req, res, next) => {
     const { id: userId } = req.user;
     const { id: AvailableOfferId } = req.params;
 
-    const AvailableOffer = await db.models.AvailableOffer.findOne({ where: { id: AvailableOfferId, userId } });
-    if (!AvailableOffer) {
+    const availableOffer = await db.models.AvailableOffer.findOne({ where: { id: AvailableOfferId, userId } });
+    if (!availableOffer) {
       return next(createError(404, 'There is no AvailableOffer with this id!'));
     }
 
-    await AvailableOffer.destroy();
+    await availableOffer.destroy();
     return res.status(204).send();
   } catch (err) {
     return next(err);

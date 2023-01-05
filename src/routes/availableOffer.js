@@ -2,16 +2,18 @@ import { Router } from 'express';
 
 import * as availableOfferController from '@/controllers/availableOffer';
 import * as availableOfferValidations from '@/routes/validations/availableOffer';
-import { validate } from '@/middleware';
+import { isAuthenticated, validate } from '@/middleware';
 
 const router = Router();
 
 router.route('/')
-  .get(validate(availableOfferValidations.listAssociatedJobRules), availableOfferController.getAvailableOffers)
-  .post(validate(availableOfferValidations.createAvailableOfferRules), availableOfferController.createAvailableOffer);
+  .get(isAuthenticated, validate(availableOfferValidations.listAssociatedJobRules),
+    availableOfferController.getAvailableOffers)
+  .post(isAuthenticated, validate(availableOfferValidations.createAvailableOfferRules),
+    availableOfferController.createAvailableOffer);
 
 router.route('/:id')
-  .get(availableOfferValidations.getAvailableOfferById)
-  .delete(availableOfferValidations.deleteAvailableOffer);
+  .get(isAuthenticated, availableOfferController.getAvailableOfferById)
+  .delete(isAuthenticated, availableOfferController.deleteAvailableOffer);
 
 export default router;
