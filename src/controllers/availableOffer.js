@@ -3,7 +3,7 @@ import createError from 'http-errors';
 import db from '@/database';
 
 /**
- * POST /AvailableOffer
+ * POST /availableOffers
  * Create AvailableOffer request
  */
 export const createAvailableOffer = async (req, res, next) => {
@@ -27,7 +27,7 @@ export const createAvailableOffer = async (req, res, next) => {
 };
 
 /**
- * GET /AvailableOffers
+ * GET /availableOffers
  * List AvailableOffers with pagination
  */
 export const getAvailableOffers = async (req, res, next) => {
@@ -57,7 +57,7 @@ export const getAvailableOffers = async (req, res, next) => {
 };
 
 /**
- * GET /AvailableOffer/:id
+ * GET /availableOffers/:id
  * Get AvailableOfferController by id
  */
 export const getAvailableOfferById = async (req, res, next) => {
@@ -76,14 +76,14 @@ export const getAvailableOfferById = async (req, res, next) => {
       return next(createError(404, 'There is no AvailableOffer with this id!'));
     }
 
-    return res.status(200).json(AvailableOffer);
+    return res.status(200).json(availableOffer);
   } catch (err) {
     return next(err);
   }
 };
 
 /**
- * DELETE /AvailableOffer/:id
+ * DELETE /availableOffers/:id
  * Delete AvailableOffer request
  */
 export const deleteAvailableOffer = async (req, res, next) => {
