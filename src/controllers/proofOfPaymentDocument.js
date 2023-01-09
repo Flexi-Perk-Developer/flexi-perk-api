@@ -15,9 +15,11 @@ export const createProofOfPaymentDocument = async (req, res, next) => {
       userId,
     };
 
+    // TODO: upload doc to EFS or some document storage
+
     const proofOfPaymentDocument = await db.models.ProofOfPaymentDocument
       .create(proofOfPaymentDocumentFields, {
-        fields: ['associatedJobId', 'monthOfIncome', 'amount'],
+        fields: ['associatedJobId', 'location', 'description'],
       });
 
     return res.status(201).json(proofOfPaymentDocument);
@@ -39,10 +41,6 @@ export const getProofOfPaymentDocument = async (req, res, next) => {
       .findAndCountAll({
         offset,
         limit: perPage,
-        include: {
-          model: db.models.User,
-          attributes: ['id', 'firstName', 'lastName'],
-        },
         order: [['createdAt', 'DESC']],
       });
 
@@ -65,17 +63,7 @@ export const getProofOfPaymentDocumentById = async (req, res, next) => {
     const { id: proofOfPaymentDocumentId } = req.params;
 
     const proofOfPaymentDocument = await db.models.ProofOfPaymentDocument
-      .findOne({
-        where: { id: proofOfPaymentDocumentId },
-        include: {
-          model: db.models.AssociatedJob,
-          attributes: ['description'],
-          include: {
-            model: db.models.User,
-            attributes: ['id', 'firstName', 'lastName'],
-          },
-        },
-      });
+      .findOne({ where: { id: proofOfPaymentDocumentId } });
     if (!proofOfPaymentDocument) {
       return next(createError(404, 'There is no proofOfPaymentDocument with this id!'));
     }
