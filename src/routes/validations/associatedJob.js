@@ -1,10 +1,7 @@
-import { body, query } from 'express-validator';
-
-export const listAssociatedJobRules = [
-  query('page').optional().isInt().toInt(),
-  query('perPage').optional().isInt().toInt(),
-];
+import { body } from 'express-validator';
 
 export const createAssociatedJobRules = [
   body('description').isLength({ max: 140 }).exists(),
 ];
+
+export default createAssociatedJobRules;

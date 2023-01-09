@@ -5,6 +5,7 @@ import associatedJobRouter from '@/routes/associatedJob';
 import availableOfferRouter from '@/routes/availableOffer';
 import claimOfferRouter from '@/routes/claimOffer';
 import requestedOfferRouter from '@/routes/requestedOffer';
+import paymentDataRouter from '@/routes/paymentData';
 import referralRouter from '@/routes/referral';
 
 export default function (app) {
@@ -15,5 +16,6 @@ export default function (app) {
   app.use('/availableOffers', availableOfferRouter);
   app.use('/claimOffers', claimOfferRouter);
   app.use('/requestedOffers', requestedOfferRouter);
+  app.use('/paymentData', paymentDataRouter);
   app.use('/referrals', referralRouter);
 }

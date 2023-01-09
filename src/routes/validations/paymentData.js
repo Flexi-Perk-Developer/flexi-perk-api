@@ -1,7 +1,8 @@
 import { body } from 'express-validator';
 
 export const createTweetRules = [
-  body('tweet').isLength({ max: 140 }).exists(),
+  body('amount').isNumeric().exists(),
+  body('monthOfIncome').isDate().exists(),
 ];
 
 export default createTweetRules;

@@ -44,7 +44,7 @@ export const getClaimOffers = async (req, res, next) => {
           include: {
             model: db.models.User,
             attributes: ['id', 'firstName', 'lastName'],
-          }
+          },
         },
         order: [['createdAt', 'DESC']],
       });
@@ -75,7 +75,7 @@ export const getClaimOfferById = async (req, res, next) => {
           include: {
             model: db.models.User,
             attributes: ['id', 'firstName', 'lastName'],
-          }
+          },
         },
       });
     if (!claimOffer) {
@@ -97,7 +97,7 @@ export const deleteClaimOffer = async (req, res, next) => {
     const { id: userId } = req.user;
     const { id: claimOfferId } = req.params;
 
-    //TODO: Fix delete lookup requestOfferId?
+    // TODO: Fix delete lookup requestOfferId?
 
     const claimOffer = await db.models.ClaimOffer.findOne({ where: { id: claimOfferId, userId } });
     if (!claimOffer) {

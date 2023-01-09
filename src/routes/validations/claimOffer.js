@@ -1,10 +1,7 @@
-import { body, query } from 'express-validator';
-
-export const listClaimOffersRules = [
-  query('page').optional().isInt().toInt(),
-  query('perPage').optional().isInt().toInt(),
-];
+import { body } from 'express-validator';
 
 export const createClaimOffersRules = [
   body('requestOfferId').exists(),
 ];
+
+export default createClaimOffersRules;

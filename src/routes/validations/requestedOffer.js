@@ -1,10 +1,7 @@
-import { body, query } from 'express-validator';
+import { body } from 'express-validator';
 
-export const listRequestedOfferRules = [
-  query('page').optional().isInt().toInt(),
-  query('perPage').optional().isInt().toInt(),
-];
-
-export const createRequestedOfferRules = [
+export const createTweetRules = [
   body('availableOfferId').exists(),
 ];
+
+export default createTweetRules;

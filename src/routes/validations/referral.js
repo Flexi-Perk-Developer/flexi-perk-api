@@ -1,13 +1,10 @@
-import { body, query } from 'express-validator';
+import { body } from 'express-validator';
 
-export const listReferralRules = [
-  query('page').optional().isInt().toInt(),
-  query('perPage').optional().isInt().toInt(),
-];
-
-export const createReferralRules = [
+export const createTweetRules = [
   body('name').exists(),
   // Optional fields?
   // body('contactNumber').exists(),
   // body('email').exists(),
 ];
+
+export default createTweetRules;
